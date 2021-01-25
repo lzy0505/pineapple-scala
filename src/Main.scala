@@ -1,4 +1,3 @@
-import Lexer.{Lexer, Token}
 import Backend.Backend
 
 import scala.io.Source
