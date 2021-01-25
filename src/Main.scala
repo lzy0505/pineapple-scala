@@ -1,11 +1,18 @@
 import Lexer.{Lexer, Token}
 import Backend.Backend
 
+import scala.io.Source
+
 object Main {
 
-  var lexer = new Lexer()
-
   def main(args: Array[String]): Unit = {
-    Backend.execute("$a = \"pen pineapple apple pen.\"\nprint($a)")
+    if (args.length !=1){
+      printf("invalid arguments.")
+    }else{
+      val buffer = Source.fromFile(args(0))
+      val code = buffer.mkString
+      Backend.execute(code)
+      buffer.close()
+    }
   }
 }
